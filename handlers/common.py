@@ -12,28 +12,32 @@ router = Router()
 async def cmd_start(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
-        text="Choose what do you want to do: "
+        text="Choose what you want to do: "
         "Create workout (/workout) or calculate body mass index (BMI) (/bmi).",
         reply_markup=ReplyKeyboardRemove(),
     )
 
+
 @router.message(Command(commands=["bmi"]))
-async def cmd_start(message: Message, state: FSMContext):
+async def cmd_bmi(message: Message, state: FSMContext):
     await state.clear()
     await message.answer(
-        text="Coming soon. Try (/workout) command to create workout",
+        text="Coming soon. Try (/workout) command to create a workout.",
         reply_markup=ReplyKeyboardRemove(),
     )
+
 
 @router.message(StateFilter(None), Command(commands=["cancel"]))
 @router.message(default_state, F.text.lower() == "cancel")
 async def cmd_cancel_no_state(message: Message, state: FSMContext):
     await state.set_data({})
-    await message.answer(text="Nothing to cancel", reply_markup=ReplyKeyboardRemove())
+    await message.answer(text="Nothing to cancel.", reply_markup=ReplyKeyboardRemove())
 
 
 @router.message(Command(commands=["cancel"]))
 @router.message(F.text.lower() == "cancel")
 async def cmd_cancel(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer(text="Action was canceled", reply_markup=ReplyKeyboardRemove())
+    await message.answer(
+        text="The action was canceled.", reply_markup=ReplyKeyboardRemove()
+    )

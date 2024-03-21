@@ -41,7 +41,7 @@ async def workout_command(message: Message, state: FSMContext):
 async def body_part_chosen(message: Message, state: FSMContext):
     await state.update_data(chosen_body_part=message.text.lower())
     await message.answer(
-        text="Choose number of exercices:",
+        text="Choose number of exercises:",
         reply_markup=make_keyboard(available_number_of_exercises),
     )
     await state.set_state(CreateWorkout.choosing_number_of_exercices)
@@ -50,7 +50,7 @@ async def body_part_chosen(message: Message, state: FSMContext):
 @router.message(CreateWorkout.choosing_body_part)
 async def body_part_chosen_incorrectly(message: Message, state: FSMContext):
     await message.answer(
-        text="Invalid body part. \n\n" "Please choose correct body part:",
+        text="Invalid body part. \n\n" "Please choose the correct body part:",
         reply_markup=make_keyboard(available_body_parts),
     )
 
@@ -66,7 +66,7 @@ async def number_of_exercices_chosen(message: Message, state: FSMContext):
         instructions = "\n".join(i["instructions"])
         await message.answer_animation(
             i["gifUrl"],
-            caption=f"Exercice name - {i['name']}\n\n"
+            caption=f"Exercise name - {i['name']}\n\n"
             f"Instructions: \n {instructions}",
             reply_markup=ReplyKeyboardRemove(),
         )
@@ -76,6 +76,6 @@ async def number_of_exercices_chosen(message: Message, state: FSMContext):
 @router.message(CreateWorkout.choosing_number_of_exercices)
 async def number_of_exercices_chosen_incorrectly(message: Message):
     await message.answer(
-        text="Wrong number of exercices",
+        text="Wrong number of exercises.",
         reply_markup=make_keyboard(available_number_of_exercises),
     )
