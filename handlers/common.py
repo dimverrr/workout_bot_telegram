@@ -17,6 +17,13 @@ async def cmd_start(message: Message, state: FSMContext):
         reply_markup=ReplyKeyboardRemove(),
     )
 
+@router.message(Command(commands=["bmi"]))
+async def cmd_start(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer(
+        text="Coming soon. Try (/workout) command to create workout",
+        reply_markup=ReplyKeyboardRemove(),
+    )
 
 @router.message(StateFilter(None), Command(commands=["cancel"]))
 @router.message(default_state, F.text.lower() == "cancel")
