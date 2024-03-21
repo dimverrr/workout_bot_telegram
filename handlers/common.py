@@ -18,13 +18,13 @@ async def cmd_start(message: Message, state: FSMContext):
     )
 
 
-@router.message(Command(commands=["bmi"]))
-async def cmd_bmi(message: Message, state: FSMContext):
-    await state.clear()
-    await message.answer(
-        text="Coming soon. Try (/workout) command to create a workout.",
-        reply_markup=ReplyKeyboardRemove(),
-    )
+# @router.message(Command(commands=["bmi"]))
+# async def cmd_bmi(message: Message, state: FSMContext):
+#     await state.clear()
+#     await message.answer(
+#         text="Coming soon. Try (/workout) command to create a workout.",
+#         reply_markup=ReplyKeyboardRemove(),
+#     )
 
 
 @router.message(StateFilter(None), Command(commands=["cancel"]))

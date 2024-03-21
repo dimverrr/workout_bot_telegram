@@ -2,9 +2,9 @@
 
 The bot will help you to create a workout by body part.
 
-Bot link - https://t.me/gym_pal_bot 
+Bot link - https://t.me/gym_pal_bot
 
-Note that 'neck' has only 2 exercises in https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb, so exercises will be repeated in case you choose 2+ exercises while creating a workout. 
+Note that 'neck' has only 2 exercises in https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb, so exercises will be repeated in case you choose 2+ exercises while creating a workout.
 
 # Add your commands and features
 To create your bot based on this bot you need to create a .env file. Copy .env.example file variables to your .env file

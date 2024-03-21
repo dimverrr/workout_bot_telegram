@@ -63,11 +63,10 @@ async def number_of_exercices_chosen(message: Message, state: FSMContext):
     user_data = await state.get_data()
     exercices = request_exercice(user_data["chosen_body_part"], message.text.lower())
     for i in exercices:
-        instructions = "\n".join(i["instructions"])
+        instructions = "\n\n".join(i["instructions"])
         await message.answer_animation(
             i["gifUrl"],
-            caption=f"Exercise name - {i['name']}\n\n"
-            f"Instructions: \n {instructions}",
+            caption=f"Exercise name - {i['name']}\n\n" f"Instructions: {instructions}",
             reply_markup=ReplyKeyboardRemove(),
         )
     await state.clear()
